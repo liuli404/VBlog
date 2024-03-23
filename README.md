@@ -13,7 +13,6 @@ go语言 Web 全栈开发练手项目，简单的博客系统 Vblog
 
 # 三、项目设计
 
-
 ## 3.1 业务流程设计
 
 
@@ -70,6 +69,7 @@ CREATE TABLE `tokens` (
   UNIQUE KEY `idx_token` (`access_token`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 ## 3.3 Restful API设计
 
 ### 3.3.1 博客管理
@@ -126,8 +126,15 @@ body 一般不传数据
 ```json
 body 一般不传数据
 ```
-
 ### 3.3.3 用户管理
 ```json
 功能完整, 不做API, 可以直接操作数据库, 也可以通过单元测试
 ```
+
+### 3.4 项目结构
++ main.go：项目入口文件
++ conf：程序配置处理
++ exception：业务自定义异常
++ response：请求返回的统一格式
++ protocol：协议服务器
++ apps：业务模块开发区域
