@@ -12,10 +12,6 @@ type Service interface {
 	QueryUser(context.Context, *QueryUserRequest) (*User, error)
 	//查询用户详情
 	DescribeUser(context.Context, *DescribeUserRequest) (*User, error)
-	//修改用户信息
-	ModifyUser(context.Context, *ModifyUserRequest) (*User, error)
-	// 删除用户
-	DeleteUser(context.Context, *DeleteUserRequest) (*User, error)
 }
 
 type CreateUserRequest struct {
@@ -32,10 +28,4 @@ type QueryUserRequest struct {
 }
 
 type DescribeUserRequest struct {
-}
-
-type ModifyUserRequest struct {
-}
-
-type DeleteUserRequest struct {
 }

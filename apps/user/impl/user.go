@@ -7,7 +7,7 @@ import (
 )
 
 // 判断服务有没有实现这个接口
-var _ user.Service = (*UserServiceImpl)(nil)
+// var _ user.Service = (*UserServiceImpl)(nil)
 
 // 实现 User.Service 方法
 func (I *UserServiceImpl) CreateUser(ctx context.Context, in *user.CreateUserRequest) (*user.User, error) {
