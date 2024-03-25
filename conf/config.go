@@ -1,6 +1,7 @@
 package conf
 
 import (
+	"encoding/json"
 	"fmt"
 	"sync"
 
@@ -16,7 +17,7 @@ func C() *Config {
 	// 如果配置为空
 	if config == nil {
 		// 给个默认值
-		config = &Config{}
+		config = DefaultConfig()
 	}
 	return config
 }
@@ -25,6 +26,29 @@ func C() *Config {
 // 把配置对象做成全局变量
 type Config struct {
 	MySQL *MySQL `json:"mysql" yaml:"mysql" toml:"mysql"`
+}
+
+// 默认值，使得程序没有配置默认可以运行
+func DefaultConfig() *Config {
+	return &Config{
+		MySQL: &MySQL{
+			Host:     "110.41.160.251",
+			Port:     3310,
+			DB:       "vblog",
+			Username: "root",
+			Password: "123456Aa.",
+			Debug:    true,
+		},
+	}
+}
+
+// 自定义Stringger打印值
+func (c *Config) String() string {
+	jsondata, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return fmt.Sprintf("%p", c)
+	}
+	return string(jsondata)
 }
 
 // db对象也是一个单列模式

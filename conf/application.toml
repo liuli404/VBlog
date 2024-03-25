@@ -1,0 +1,7 @@
+[mysql]
+  host = "110.41.160.251"
+  port = 3310
+  database = "vblog"
+  username = "root"
+  password = "123456Aa."
+  debug = true

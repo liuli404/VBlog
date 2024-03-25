@@ -10,7 +10,7 @@ import (
 
 func init() {
 	// 加载被测试对象 i 就是 User Server 的具体实现对象
-	i = &impl.UserServiceImpl{}
+	i = impl.NewUserServiceImpl()
 }
 
 var (
@@ -19,7 +19,12 @@ var (
 )
 
 func TestCreateUser(t *testing.T) {
-	u, err := i.CreateUser(ctx, nil)
+	// 使用构造函数创建请求对象
+	req := user.NewCreateUserRequest()
+	req.Username = "admin"
+	req.Password = "123456A."
+	req.Role = "Admin"
+	u, err := i.CreateUser(ctx, req)
 	// 单元测试异常处理，直接中断单元流程并且失败
 	if err != nil {
 		t.Fatal(err)
